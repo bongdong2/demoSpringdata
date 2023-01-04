@@ -2,9 +2,12 @@ package me.seungui.demospringdata;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Post {
@@ -14,11 +17,14 @@ public class Post {
 
   private String title;
 
+  // Fetch 연관관계 엔티티를 어떻게 가져올 것이냐
+  // 지금(Eager), 나중에(Lazy)
+  @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
   private Set<Comment> comments = new HashSet<>();
 
   public void addComment(Comment comment) {
     this.getComments().add(comment);
-    comment.setPosts(this);
+    comment.setPost(this);
   }
 
   public Long getId() {
@@ -43,5 +49,12 @@ public class Post {
 
   public void setComments(Set<Comment> comments) {
     this.comments = comments;
+  }
+
+  @Override
+  public String toString() {
+    return "Post{" +
+        "title='" + title + '\'' +
+        '}';
   }
 }

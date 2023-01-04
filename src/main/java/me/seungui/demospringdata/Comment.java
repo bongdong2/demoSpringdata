@@ -1,6 +1,7 @@
 package me.seungui.demospringdata;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -13,7 +14,7 @@ public class Comment {
 
   private String comment;
 
-  @ManyToOne
+  @ManyToOne()
   private Post post;
 
   public Long getId() {
