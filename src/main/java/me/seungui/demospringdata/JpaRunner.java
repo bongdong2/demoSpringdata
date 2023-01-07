@@ -11,11 +11,13 @@ import org.springframework.stereotype.Component;
 public class JpaRunner implements ApplicationRunner {
 
   @Autowired
-  PostRepository repository;
+  PostRepository postRepository;
 
   @Override
   public void run(ApplicationArguments args) {
-    repository.findAll().forEach(System.out::println);
+    Post post = new Post();
+    post.setTitle("title");
+    postRepository.save(post);
   }
 }
 
