@@ -16,25 +16,8 @@ public class Comment {
   @ManyToOne()
   private Post post;
 
-  private String title;
-
   private int likeCount = 0;
 
-  public int getLikeCount() {
-    return likeCount;
-  }
-
-  public void setLikeCount(int like) {
-    this.likeCount = like;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
 
   public Long getId() {
     return id;
@@ -60,5 +43,11 @@ public class Comment {
     this.post = post;
   }
 
+  public int getLikeCount() {
+    return likeCount;
+  }
 
+  public void setLikeCount(int likeCount) {
+    this.likeCount = likeCount;
+  }
 }
